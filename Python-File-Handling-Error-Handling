@@ -1,0 +1,23 @@
+def modify_file(input_filename, output_filename):
+    try:
+        with open(input_filename, "r") as infile:
+            content = infile.read()  # Read the original content
+
+        # Modify the content (for example, converting to uppercase)
+        modified_content = content.upper()
+
+        with open(output_filename, "w") as outfile:
+            outfile.write(modified_content)  # Write modified content
+
+        print(f" Successfully modified and saved to {output_filename}")
+
+    except FileNotFoundError:
+        print("Error: The file does not exist. Please check the filename.")
+    except IOError:
+        print("Error: Unable to read/write the file.")
+
+# Ask user for input and output filenames
+input_file = input("Enter the name of the file to read: ")
+output_file = "modified_" + input_file  # Create a new modified file
+
+modify_file(input_file, output_file)
